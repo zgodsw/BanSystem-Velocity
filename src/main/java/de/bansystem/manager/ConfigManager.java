@@ -56,15 +56,15 @@ public class ConfigManager {
     }
 
     public String getMySQLDatabase() {
-        return config.getNode("mysql", "database").getString("ban");
+        return config.getNode("mysql", "database").getString("DEINE DATENBANK");
     }
 
     public String getMySQLUsername() {
-        return config.getNode("mysql", "username").getString("admin");
+        return config.getNode("mysql", "username").getString("DEIN USERNAME");
     }
 
     public String getMySQLPassword() {
-        return config.getNode("mysql", "password").getString("M8YkJ0l2U)Gd2zlZ");
+        return config.getNode("mysql", "password").getString("DEIN PASSWORT");
     }
 
     public boolean isWebInterfaceEnabled() {
