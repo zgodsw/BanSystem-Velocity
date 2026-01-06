@@ -1,0 +1,173 @@
+# ==========================================
+#     BanSystem v2.0 - Konfiguration
+# ==========================================
+
+# Datenbank Einstellungen
+database:
+  # Typ: mysql oder sqlite
+  type: "mysql"
+
+  # MySQL Einstellungen (nur wenn type: mysql)
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "bansystem"
+    username: "root"
+    password: "password"
+    useSSL: false
+
+  # SQLite Einstellungen (nur wenn type: sqlite)
+  sqlite:
+    filename: "bansystem.db"
+
+# Prefix für alle Nachrichten
+prefix: "&8[&cBanSystem&8] &7"
+
+# Nachrichten
+messages:
+  # Allgemeine Nachrichten
+  no-permission: "&cDazu hast du keine Berechtigung!"
+  player-not-found: "&cDieser Spieler wurde nicht gefunden!"
+  player-not-online: "&cDieser Spieler ist nicht online!"
+  invalid-duration: "&cUngültige Zeitangabe! Beispiel: 1d, 2h, 30m"
+  invalid-id: "&cUngültige ID!"
+  database-error: "&cEin Datenbankfehler ist aufgetreten!"
+
+  # Ban Nachrichten
+  ban:
+    success: "&aDu hast &e{player} &afuer &e{duration} &agebannt! &7(Grund: {reason})"
+    success-permanent: "&aDu hast &e{player} &apermanent gebannt! &7(Grund: {reason})"
+    already-banned: "&cDieser Spieler ist bereits gebannt!"
+    broadcast: "&e{player} &cwurde von &e{banner} &cgebannt! &7(Grund: {reason})"
+
+  unban:
+    success: "&aDu hast &e{player} &aentbannt!"
+    not-banned: "&cDieser Spieler ist nicht gebannt!"
+    broadcast: "&e{player} &awurde von &e{unbanner} &aentbannt!"
+
+  # Mute Nachrichten
+  mute:
+    success: "&aDu hast &e{player} &afür &e{duration} &agemuted! &7(Grund: {reason})"
+    success-permanent: "&aDu hast &e{player} &apermanent gemuted! &7(Grund: {reason})"
+    already-muted: "&cDieser Spieler ist bereits gemuted!"
+    broadcast: "&e{player} &cwurde von &e{muter} &cgemuted! &7(Grund: {reason})"
+    chat-message: "&cDu bist gemuted und kannst nicht schreiben!"
+
+  unmute:
+    success: "&aDu hast &e{player} &aentmuted!"
+    not-muted: "&cDieser Spieler ist nicht gemuted!"
+    broadcast: "&e{player} &awurde von &e{unmuter} &aentmuted!"
+
+  # Kick Nachrichten
+  kick:
+    success: "&aDu hast &e{player} &agekickt! &7(Grund: {reason})"
+    broadcast: "&e{player} &cwurde von &e{kicker} &cgekickt! &7(Grund: {reason})"
+
+  # Report Nachrichten
+  report:
+    success: "&aDu hast &e{player} &areportet! &7(Grund: {reason})"
+    already-reported: "&cDu hast diesen Spieler bereits reportet!"
+    cooldown: "&cBitte warte noch &e{time} &cSekunden!"
+    broadcast: "&e{reporter} &chat &e{player} &creportet! &7(Grund: {reason})"
+
+  reports:
+    no-reports: "&cEs gibt keine offenen Reports!"
+    header: "&8&m----------&8[ &cReports &8]&m----------"
+    entry: "&7#{id} &8| &e{player} &7von &e{reporter} &8- &7{reason}"
+    footer: "&8&m--------------------------------"
+
+  # Notes Nachrichten
+  notes:
+    added: "&aNotiz für &e{player} &ahinzugefügt!"
+    no-notes: "&cEs gibt keine Notizen für diesen Spieler!"
+    header: "&8&m----------&8[ &eNotizen &8]&m----------"
+    entry: "&7#{id} &8| &e{staff} &8- &7{note}"
+    footer: "&8&m--------------------------------"
+
+  # Check Nachrichten
+  check:
+    header: "&8&m----------&8[ &e{player} &8]&m----------"
+    bans: "&7Bans: &e{count}"
+    mutes: "&7Mutes: &e{count}"
+    kicks: "&7Kicks: &e{count}"
+    reports: "&7Reports: &e{count}"
+    notes: "&7Notizen: &e{count}"
+    current-ban: "&7Aktueller Ban: &c{reason} &7bis &e{until}"
+    current-mute: "&7Aktueller Mute: &c{reason} &7bis &e{until}"
+    footer: "&8&m--------------------------------"
+
+# Ban Screen (wenn Spieler gebannt ist)
+ban-screen:
+  header: "&c&lDU WURDEST GEBANNT!"
+  reason: "&7Grund: &c{reason}"
+  duration: "&7Dauer: &e{duration}"
+  expires: "&7Läuft ab: &e{expires}"
+  permanent: "&7Dauer: &4PERMANENT"
+  ban-id: "&7Ban-ID: &e{id}"
+  footer: "&7Bei Fragen: discord.gg/deinserver"
+
+# Kick Screen
+kick-screen:
+  header: "&c&lDU WURDEST GEKICKT!"
+  reason: "&7Grund: &c{reason}"
+  by: "&7Von: &e{kicker}"
+  footer: "&7Du kannst dich wieder verbinden!"
+
+# Zeitformat
+time-format:
+  years: "Jahr(e)"
+  months: "Monat(e)"
+  weeks: "Woche(n)"
+  days: "Tag(e)"
+  hours: "Stunde(n)"
+  minutes: "Minute(n)"
+  seconds: "Sekunde(n)"
+  permanent: "Permanent"
+
+# Report System
+report-system:
+  enabled: true
+  cooldown: 60 # Sekunden zwischen Reports
+  notify-staff: true
+  min-reason-length: 5
+
+# Bestrafungs-Templates (optional)
+punishment-templates:
+  enabled: true
+  templates:
+    hacking:
+      type: "ban"
+      duration: "30d"
+      reason: "Hacking/Cheating"
+
+    spam:
+      type: "mute"
+      duration: "1h"
+      reason: "Spam"
+
+    toxicity:
+      type: "mute"
+      duration: "3h"
+      reason: "Toxisches Verhalten"
+
+    advertising:
+      type: "ban"
+      duration: "7d"
+      reason: "Werbung"
+
+# Berechtigungen
+permissions:
+  ban: "bansystem.ban"
+  unban: "bansystem.unban"
+  mute: "bansystem.mute"
+  unmute: "bansystem.unmute"
+  kick: "bansystem.kick"
+  report: "bansystem.report"
+  reports: "bansystem.reports"
+  notes: "bansystem.notes"
+  check: "bansystem.check"
+  notify: "bansystem.notify"
+  bypass-mute: "bansystem.bypass.mute"
+
+# Debug Modus
+debug: false
